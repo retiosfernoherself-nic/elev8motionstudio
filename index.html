@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Elev8 Motion Studio · Animated flyers & media for food and drink brands</title>
+<meta name="description" content="Elev8 Motion Studio designs animated flyers, menus, logos and seasonal campaigns that make people hungry before they've read a word. Founded by Precious Muiambo.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Elev8 Motion Studio">
+<meta property="og:description" content="Animated flyers, menus and media that make people hungry before they've read a word.">
+<meta property="og:image" content="media/share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#fdf2f5">
+<link rel="icon" type="image/png" href="media/icon-192.png">
+<link rel="apple-touch-icon" href="media/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: soft light-pink page with a pastel rainbow glow in the corners; condensed menu-board headings in
+   charcoal grey with soft shadows; work shown at real Instagram size; services listed like menu items. */
+:root {
+  --paper: #fdf2f5;
+  --surface: #ffffff;
+  --ink: #37343b;
+  --grey: #85808b;
+  --grey-soft: #ece8ee;
+  --line: #ecdde4;
+  --rose: #e2779f;
+  --lilac: #b9a3ef;
+  --aura-a: .9;
+  --shadow: 0 18px 44px rgba(120, 96, 140, .18);
+  --f-display: "Anton", "Impact", "Arial Narrow", sans-serif;
+  --f-body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #211c23; --surface: #2a2430; --ink: #f2edf3; --grey: #aaa3ae; --grey-soft: #3a3340; --line: #3e3644;
+    --rose: #f29bbd; --lilac: #c8b6f6; --aura-a: .28; --shadow: 0 18px 44px rgba(0, 0, 0, .4); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #211c23; --surface: #2a2430; --ink: #f2edf3; --grey: #aaa3ae; --grey-soft: #3a3340; --line: #3e3644;
+  --rose: #f29bbd; --lilac: #c8b6f6; --aura-a: .28; --shadow: 0 18px 44px rgba(0, 0, 0, .4); color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font-family: var(--f-body); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; position: relative; }
+/* soft pastel rainbow in each corner, blended into the pink */
+.aura { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: var(--aura-a);
+  background:
+    radial-gradient(46vmax 46vmax at 0% 0%, #ffd3e4 0%, rgba(255, 211, 228, 0) 70%),
+    radial-gradient(30vmax 30vmax at 22% 0%, rgba(255, 228, 204, .8) 0%, rgba(255, 228, 204, 0) 70%),
+    radial-gradient(44vmax 44vmax at 100% 0%, #d3eaff 0%, rgba(211, 234, 255, 0) 70%),
+    radial-gradient(28vmax 28vmax at 100% 30%, rgba(255, 243, 200, .75) 0%, rgba(255, 243, 200, 0) 70%),
+    radial-gradient(46vmax 46vmax at 100% 100%, #e4d8ff 0%, rgba(228, 216, 255, 0) 70%),
+    radial-gradient(44vmax 44vmax at 0% 100%, #d4f4e4 0%, rgba(212, 244, 228, 0) 70%),
+    radial-gradient(28vmax 28vmax at 0% 70%, rgba(255, 214, 236, .7) 0%, rgba(255, 214, 236, 0) 70%);
+}
+.wrap {
+  position: relative; z-index: 1; max-width: 1160px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h1, h2 { font-family: var(--f-display); font-weight: 400; text-transform: uppercase; letter-spacing: 0.005em; }
+h2 { text-shadow: 3px 4px 0 rgba(226, 119, 159, .22), 0 10px 24px rgba(185, 163, 239, .35); }
+p { margin: 0; }
+.mono { font-family: var(--f-mono); font-size: 12.5px; color: var(--grey); letter-spacing: 0.02em; font-variant-numeric: tabular-nums; }
+.kicker { font-family: var(--f-mono); font-size: 12.5px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--grey); }
+
+/* Logo banner across the top: the logo is a mask, filled charcoal with the film reel in pink and lilac */
+.banner { position: relative; z-index: 1; display: flex; justify-content: center; align-items: center;
+  padding-block: 22px 20px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  background: linear-gradient(180deg, rgba(255, 255, 255, .55), rgba(255, 255, 255, .25)); border-bottom: 1px solid var(--line); }
+.banner::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 3px;
+  background: linear-gradient(90deg, #ffc6dc, #ffe2c9 20%, #fff2c2 38%, #cdeedd 56%, #cfe6ff 74%, #dccdff); opacity: .9; }
+.logo { display: block; width: min(440px, 82vw); aspect-ratio: 687 / 370; filter: drop-shadow(0 8px 18px rgba(185, 163, 239, .35));
+  background: linear-gradient(90deg, var(--ink) 0 40.5%, #f19bc0 44%, #c4a6f2 54%, #9fc8f4 62%, var(--ink) 65.5% 100%);
+  -webkit-mask: url(media/elev8-logo-mask.png) center / contain no-repeat; mask: url(media/elev8-logo-mask.png) center / contain no-repeat; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* Hero */
+.hero { padding-block: 52px 48px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 44px; align-items: center; }
+.hero h1 { font-size: clamp(56px, 8.4vw, 112px); line-height: 0.9; margin-top: 14px;
+  text-shadow: 0 2px 0 rgba(255, 255, 255, .7), 5px 7px 0 rgba(226, 119, 159, .28), 0 18px 36px rgba(185, 163, 239, .45); }
+.hero h1 .accent { color: var(--rose); }
+.lede { font-size: clamp(19px, 2.1vw, 23px); font-weight: 600; margin-top: 22px; max-width: 26em; text-shadow: 0 1px 12px rgba(255, 211, 228, .6); }
+.sub { color: var(--grey); margin-top: 12px; max-width: 34em; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.btn { display: inline-flex; align-items: center; text-decoration: none; padding: 12px 22px; border-radius: 999px; border: 2px solid var(--grey); color: var(--ink); background: rgba(255, 255, 255, .35); font: inherit; font-weight: 700; cursor: pointer; }
+.btn.primary { border-color: transparent; color: #fff; background: linear-gradient(135deg, #f19bc0, #c4a6f2 60%, #9fc8f4); box-shadow: 0 10px 24px rgba(196, 166, 242, .45); text-shadow: 0 1px 2px rgba(80, 50, 90, .25); }
+.btn:focus-visible, button:focus-visible { outline: 3px solid var(--lilac); outline-offset: 3px; }
+.stage { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+.stage .piece:nth-child(2) { margin-top: 36px; }
+
+/* Media frames */
+.frame { position: relative; overflow: hidden; border-radius: 18px; background: var(--grey-soft); max-width: 100%; aspect-ratio: 4 / 5;
+  box-shadow: var(--shadow); border: 1px solid rgba(255, 255, 255, .7); }
+.frame video, .frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ctrl { position: absolute; right: 10px; bottom: 10px; display: flex; gap: 8px; }
+.ctrl button {
+  height: 38px; min-width: 38px; padding: 0 12px; border-radius: 999px; border: 0;
+  background: rgba(55, 52, 59, .7); color: #fff; display: inline-flex; align-items: center; gap: 6px; cursor: pointer; font: 600 13px var(--f-body);
+}
+.ctrl svg { width: 15px; height: 15px; fill: currentColor; }
+.tap { position: absolute; inset: 0; display: grid; place-items: center; border: 0; cursor: pointer; background: rgba(55, 52, 59, .18); }
+.tap span { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px; background: rgba(255, 255, 255, .92); color: #37343b; font: 700 15px var(--f-body); box-shadow: 0 8px 20px rgba(0, 0, 0, .18); }
+.tap svg { width: 16px; height: 16px; fill: currentColor; }
+
+.piece { display: grid; gap: 10px; align-content: start; min-width: 0; }
+.piece h3 { font-size: 20px; font-weight: 700; }
+.piece p { color: var(--grey); font-size: 15.5px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font-family: var(--f-mono); font-size: 11.5px; padding: 3px 9px; border-radius: 999px; background: var(--grey-soft); color: var(--grey); }
+
+/* Sections */
+section { padding-block: 60px; border-top: 1px solid var(--line); }
+.head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px 28px; flex-wrap: wrap; margin-bottom: 30px; }
+.head h2 { font-size: clamp(44px, 6.4vw, 76px); line-height: 0.95; }
+.head p { color: var(--grey); max-width: 30em; }
+
+/* My work: one piece shows as a feature; more pieces flow into a grid */
+.work { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 22px; }
+.work.one { grid-template-columns: minmax(0, 380px) minmax(0, 1fr); align-items: center; gap: 40px; }
+.work.one .piece { grid-template-columns: minmax(0, 1fr); }
+.feature-text { display: grid; gap: 14px; align-content: center; max-width: 34em; }
+.feature-text h3 { font-family: var(--f-display); font-weight: 400; text-transform: uppercase; font-size: clamp(30px, 3.6vw, 44px); line-height: 1; text-shadow: 3px 4px 0 rgba(226, 119, 159, .2); }
+.feature-text p { color: var(--grey); font-size: 17px; }
+
+/* Behind the design: process recordings and pictures, each beside its steps */
+.process { display: grid; gap: 48px; }
+.proc { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 48px; align-items: center; }
+.phone { position: relative; aspect-ratio: 368 / 624; max-width: 300px; border-radius: 30px; overflow: hidden; background: var(--grey-soft);
+  border: 9px solid #4a464f; box-shadow: var(--shadow), 0 0 0 1px rgba(255, 255, 255, .5); }
+.phone video, .phone img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.proc-text { display: grid; gap: 16px; min-width: 0; }
+.proc-text > p, .proc-text h3 { max-width: 36em; }
+.proc-text h3 { font-family: var(--f-display); font-weight: 400; text-transform: uppercase; font-size: clamp(30px, 3.6vw, 44px); line-height: 1; text-shadow: 3px 4px 0 rgba(226, 119, 159, .2); }
+.human { display: inline-flex; align-items: center; gap: 8px; width: fit-content; padding: 7px 14px; border-radius: 999px; font: 700 13px var(--f-body); color: #37343b;
+  background: linear-gradient(135deg, #ffd3e4, #fff2c2 45%, #cdeedd 75%, #dccdff); box-shadow: 0 6px 16px rgba(185, 163, 239, .3); }
+.human svg { width: 14px; height: 14px; fill: #e2779f; }
+.steps { margin: 0; padding: 0 0 4px; list-style: none; counter-reset: s; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.steps li { counter-increment: s; display: grid; gap: 6px; align-content: start; padding: 12px 12px 14px; border-radius: 14px; background: var(--surface); border: 1px solid var(--line); color: var(--grey); font-size: 14px; line-height: 1.45; min-width: 0; }
+.steps li strong { display: block; }
+.steps li::before { content: counter(s); font-family: var(--f-display); font-size: 26px; line-height: 1;
+  background: linear-gradient(135deg, #f19bc0, #b9a3ef 55%, #8fc3f2); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.steps strong { color: var(--ink); }
+.result { display: inline-flex; align-items: center; gap: 14px; width: fit-content; max-width: 100%; padding: 8px 18px 8px 8px; border-radius: 16px;
+  background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); color: var(--ink); text-decoration: none; }
+.result img { width: 56px; height: 70px; object-fit: cover; border-radius: 10px; flex: none; }
+.result:hover { border-color: var(--lilac); }
+
+/* About */
+.about { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 52px; align-items: center; }
+.portrait { position: relative; padding: 7px; border-radius: 26px; max-width: 380px;
+  background: linear-gradient(140deg, #ffc6dc, #ffe2c9 25%, #fff2c2 40%, #cdeedd 58%, #cfe6ff 76%, #dccdff);
+  box-shadow: var(--shadow); transform: rotate(-1.5deg); }
+.portrait img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 20px; }
+.about-text { display: grid; gap: 14px; max-width: 38em; }
+.about-text h2 { font-size: clamp(40px, 5.6vw, 64px); line-height: .95; }
+.about-text p { font-size: 18px; color: var(--grey); }
+.about-text p strong { color: var(--ink); }
+
+/* Menu of services */
+.menu-board { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: clamp(20px, 4vw, 40px); display: grid; gap: 4px; box-shadow: var(--shadow); }
+.item { display: grid; gap: 4px; padding-block: 16px; border-bottom: 1px dashed var(--line); }
+.item:last-child { border-bottom: 0; }
+.item .row { display: flex; align-items: baseline; gap: 10px; }
+.item h3 { font-family: var(--f-display); font-weight: 400; font-size: clamp(24px, 3vw, 32px); text-transform: uppercase; line-height: 1.05; }
+.item .dots { flex: 1; border-bottom: 3px dotted var(--grey); transform: translateY(-6px); min-width: 24px; opacity: .45; }
+.item .when { font-family: var(--f-mono); font-size: 13px; color: var(--rose); white-space: nowrap; }
+.item p { color: var(--grey); max-width: 44em; }
+
+/* Packages */
+.packages { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.pack { position: relative; display: grid; gap: 22px; align-content: start; padding: clamp(22px, 3.5vw, 36px); border-radius: 22px;
+  background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); overflow: hidden; }
+.pack::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 6px;
+  background: linear-gradient(90deg, #ffc6dc, #ffe2c9 25%, #fff2c2 45%, #cdeedd 65%, #cfe6ff 82%, #dccdff); }
+.pack.alt::before { background: linear-gradient(90deg, #dccdff, #cfe6ff 25%, #cdeedd 45%, #fff2c2 65%, #ffe2c9 82%, #ffc6dc); }
+.pack-top { display: grid; gap: 8px; }
+.price { font-family: var(--f-display); font-size: clamp(54px, 7vw, 80px); line-height: 1; color: var(--rose);
+  text-shadow: 0 2px 0 rgba(255, 255, 255, .6), 4px 6px 0 rgba(185, 163, 239, .3); font-variant-numeric: tabular-nums; }
+.price .cur { font-size: .55em; vertical-align: .55em; margin-right: 2px; }
+.pack h3 { font-family: var(--f-display); font-weight: 400; text-transform: uppercase; font-size: clamp(32px, 4vw, 46px); line-height: 1; text-shadow: 3px 4px 0 rgba(226, 119, 159, .2); }
+.incl { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.incl li { display: grid; grid-template-columns: 48px minmax(0, 1fr); align-items: center; gap: 12px; padding-block: 12px; border-top: 1px dashed var(--line); font-weight: 600; }
+.pack .choose { justify-self: start; }
+.quote { font-weight: 600; color: var(--grey); font-size: 15px; }
+.incl .bonus { color: var(--ink); }
+.free { display: inline-block; margin-left: 8px; padding: 2px 10px; border-radius: 999px; vertical-align: 2px; font: 700 11.5px var(--f-body); letter-spacing: .08em; text-transform: uppercase; color: #37343b;
+  background: linear-gradient(135deg, #ffd3e4, #fff2c2 45%, #cdeedd 75%, #dccdff); box-shadow: 0 4px 10px rgba(185, 163, 239, .3); }
+.quote strong { color: var(--rose); }
+
+/* Enquiry form: contact details, then the package (and season), then what they love */
+.enquire { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
+.enquire-intro { display: grid; gap: 16px; }
+.enquire-intro p { color: var(--grey); max-width: 30em; }
+.next-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; counter-reset: n; }
+.next-steps li { counter-increment: n; display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 10px; align-items: baseline; color: var(--grey); font-size: 15.5px; }
+.next-steps li::before { content: counter(n); font-family: var(--f-display); font-size: 22px; line-height: 1;
+  background: linear-gradient(135deg, #f19bc0, #b9a3ef 55%, #8fc3f2); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.next-steps strong { color: var(--ink); }
+.form-card { position: relative; padding: clamp(20px, 3.5vw, 36px); border-radius: 22px; background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); overflow: hidden; }
+.form-card::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 6px;
+  background: linear-gradient(90deg, #ffc6dc, #ffe2c9 25%, #fff2c2 45%, #cdeedd 65%, #cfe6ff 82%, #dccdff); }
+.fgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 18px; }
+.field { display: grid; gap: 6px; min-width: 0; align-content: start; }
+.field.full { grid-column: 1 / -1; }
+.field label, .field legend { font-weight: 700; font-size: 14.5px; color: var(--ink); padding: 0; }
+.field .opt { font-weight: 500; color: var(--grey); }
+.field input, .field select, .field textarea { width: 100%; font: 500 16px var(--f-body); color: var(--ink); background: var(--paper);
+  border: 1.5px solid var(--line); border-radius: 12px; padding: 11px 13px; }
+.field textarea { min-height: 112px; resize: vertical; line-height: 1.5; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--lilac); box-shadow: 0 0 0 3px rgba(185, 163, 239, .3); }
+.field input::placeholder, .field textarea::placeholder { color: var(--grey); opacity: .8; }
+.field .err { display: none; font-size: 13px; font-weight: 600; color: var(--rose); }
+.field.bad .err { display: block; }
+.field.bad input, .field.bad select { border-color: var(--rose); }
+fieldset.field { border: 0; margin: 0; padding: 0; }
+.choices { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.choice { position: relative; display: grid; gap: 2px; align-content: start; padding: 12px 14px; border-radius: 14px; border: 1.5px solid var(--line); background: var(--paper); cursor: pointer; }
+.field.bad .choice { border-color: var(--rose); }
+.choice input { position: absolute; opacity: 0; pointer-events: none; }
+.choice b { font-size: 15px; }
+.choice span { font-size: 13px; color: var(--grey); line-height: 1.35; }
+.choice:has(input:checked) { border-color: transparent; background: linear-gradient(var(--surface), var(--surface)) padding-box, linear-gradient(135deg, #f19bc0, #c4a6f2 60%, #9fc8f4) border-box; box-shadow: 0 8px 20px rgba(196, 166, 242, .3); }
+.choice:has(input:focus-visible) { outline: 3px solid var(--lilac); outline-offset: 2px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { position: relative; }
+.chip input { position: absolute; opacity: 0; pointer-events: none; }
+.chip span { display: inline-block; padding: 8px 14px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--paper); font-weight: 600; font-size: 14px; cursor: pointer; }
+.chip input:checked + span { background: linear-gradient(135deg, #ffd3e4, #fff2c2 45%, #cdeedd 75%, #dccdff); border-color: transparent; color: #37343b; }
+.chip input:focus-visible + span { outline: 3px solid var(--lilac); outline-offset: 2px; }
+.season-field[hidden] { display: none; }
+.form-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; margin-top: 22px; }
+.form-foot .mono { max-width: 32em; }
+.sent { display: grid; gap: 14px; }
+.sent:focus { outline: none; }
+.sent h3 { font-family: var(--f-display); font-weight: 400; text-transform: uppercase; font-size: clamp(30px, 4vw, 44px); line-height: 1; text-shadow: 3px 4px 0 rgba(226, 119, 159, .2); }
+.sent p { color: var(--grey); }
+.sent .send { display: flex; flex-wrap: wrap; gap: 10px; }
+.summary { margin: 0; padding: 14px 16px; border-radius: 14px; background: var(--paper); border: 1px dashed var(--line); font: 500 14px/1.55 var(--f-body); color: var(--ink); white-space: pre-wrap; max-height: 260px; overflow: auto; }
+.btn.wa { border-color: transparent; color: #fff; background: #25a35a; }
+.linkish { background: none; border: 0; padding: 0; font: 600 14px var(--f-body); color: var(--grey); text-decoration: underline; cursor: pointer; justify-self: start; }
+.incl .qty { font-family: var(--f-display); font-size: 30px; line-height: 1; text-align: center;
+  background: linear-gradient(135deg, #f19bc0, #b9a3ef 55%, #8fc3f2); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* How I work */
+.rules { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.rule { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.rule .num { font-family: var(--f-display); font-size: 48px; line-height: 1; width: fit-content;
+  background: linear-gradient(135deg, #f19bc0, #b9a3ef 55%, #8fc3f2); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.rule h3 { font-size: 19px; font-weight: 700; }
+.rule p { color: var(--grey); font-size: 15.5px; }
+
+/* Close */
+.close { padding-block: 64px; border-top: 1px solid var(--line); display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 32px; align-items: center; }
+.close h2 { font-size: clamp(46px, 7vw, 92px); line-height: .9; }
+.close h2 span { color: var(--rose); }
+.ticket { border: 2px dashed var(--grey); border-radius: 18px; padding: 22px 24px; display: grid; gap: 10px; background: var(--surface); box-shadow: var(--shadow); }
+.ticket .mono { color: var(--ink); }
+.ticket p { color: var(--grey); font-size: 17px; }
+footer { padding-block: 24px 40px; border-top: 1px solid var(--line); }
+
+@media (max-width: 960px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-block: 36px 32px; }
+  .work, .work.one { grid-template-columns: minmax(0, 1fr); }
+  .work.one .piece { max-width: 420px; }
+  .rules { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .packages { grid-template-columns: minmax(0, 1fr); }
+  .enquire { grid-template-columns: minmax(0, 1fr); }
+  .close { grid-template-columns: minmax(0, 1fr); }
+  .about { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .proc { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .steps { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(150px, 46%); overflow-x: auto; scroll-snap-type: x mandatory; }
+  .steps li { scroll-snap-align: start; }
+  .phone { max-width: 260px; }
+  .portrait { max-width: 340px; }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .rules { grid-template-columns: minmax(0, 1fr); }
+  .fgrid, .choices { grid-template-columns: minmax(0, 1fr); }
+  .item .dots { display: none; }
+  .item .row { flex-wrap: wrap; justify-content: space-between; }
+  .stage .piece:nth-child(2) { margin-top: 18px; }
+  .stage .piece p { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="aura" aria-hidden="true"></div>
+<div class="banner"><span class="logo" role="img" aria-label="Elev8 Motion Studio logo"></span></div>
+<div class="wrap">
+  <header class="hero">
+    <div>
+      <p class="kicker">Animated flyers &amp; media for food and drink brands</p>
+      <h1>Elev8<br><span class="accent">Motion Studio</span></h1>
+      <p class="lede">Animated flyers, menus and media that make people hungry before they've read a word.</p>
+      <p class="sub">We design scroll-stopping animated content for restaurants, cafés, bakeries and sweet shops: flyers that move, menus that sell, logos that come to life, and seasonal campaigns for every big date.</p>
+      <div class="cta">
+        <a class="btn primary" href="#enquire">Book a consult</a>
+        <a class="btn" href="#packages">See our packages</a>
+      </div>
+    </div>
+    <!-- Newest work: the first two pieces in content/work.js. Older pieces move to "Our work" by themselves. -->
+    <div class="stage" id="newest" aria-label="Our newest work"></div>
+  </header>
+
+  <section id="work" hidden>
+    <div class="head">
+      <h2>Our work</h2>
+      <p>Every piece is built at its real Instagram size, so nothing gets cropped when it lands in someone's feed.</p>
+    </div>
+    <div class="work" id="older"></div>
+  </section>
+
+  <section id="process">
+    <div class="head">
+      <h2>Behind the design</h2>
+      <p>Screen recordings and sketches from my process, from the first line to the finished post.</p>
+    </div>
+    <div class="process" id="process-list">
+<!-- filled from content/work.js (PROCESS) -->
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="about">
+      <div class="portrait"><img src="media/precious.jpg" alt="Portrait of Precious Muiambo"></div>
+      <div class="about-text">
+        <p class="kicker">About the founder</p>
+        <h2>Hi, I'm Precious</h2>
+        <p>I'm the founder of <strong>Elev8 Motion Studio</strong>, a design studio that makes your posts <strong>fun, engaging and impossible to ignore</strong>.</p>
+        <p>Every piece is designed around your brand, so it looks like it came from you and sells what you actually want to sell.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="packages">
+    <div class="head">
+      <h2>Packages</h2>
+      <p>Two ways to get your brand moving. Every piece is designed for your business from scratch, and we agree the details on a quick consult first.</p>
+    </div>
+    <div class="packages">
+      <article class="pack">
+        <div class="pack-top">
+          <p class="kicker">For launching or refreshing your brand</p>
+          <h3>Business Package</h3>
+          <p class="price"><span class="cur">£</span>360</p>
+        </div>
+        <ul class="incl">
+          <li><span class="qty">2</span>Animated flyers</li>
+          <li><span class="qty">1</span>Animated menu</li>
+          <li><span class="qty">1</span>Original logo</li>
+          <li><span class="qty">1</span>Original animated logo video</li>
+          <li class="bonus"><span class="qty">1</span><span>Full-page doodle<span class="free">Free</span></span></li>
+        </ul>
+        <p class="quote">Start with a quick <strong>consult call</strong>, then a 50% deposit secures your booking.</p>
+        <a class="btn primary choose" href="#enquire" data-choose="Business Package">Choose this package</a>
+      </article>
+      <article class="pack alt">
+        <div class="pack-top">
+          <p class="kicker">For the big dates: Christmas, Valentine's, Easter, Halloween and more</p>
+          <h3>Seasonal Package</h3>
+          <p class="price"><span class="cur">£</span>580</p>
+        </div>
+        <ul class="incl">
+          <li><span class="qty">4</span>Flyers</li>
+          <li><span class="qty">1</span>Fun product animation video</li>
+          <li><span class="qty">8</span>Animated product character stickers</li>
+          <li><span class="qty">1</span>Build-up animation video</li>
+          <li class="bonus"><span class="qty">1</span><span>Full-page doodle<span class="free">Free</span></span></li>
+        </ul>
+        <p class="quote">Start with a quick <strong>consult call</strong>, then a 50% deposit secures your booking.</p>
+        <a class="btn primary choose" href="#enquire" data-choose="Seasonal Package">Choose this package</a>
+      </article>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="head"><h2>How we work</h2></div>
+    <div class="rules">
+      <div class="rule"><span class="num">1</span><h3>A quick chat</h3><p>Your menu, your best sellers, the deals you want to push and the look you like.</p></div>
+      <div class="rule"><span class="num">2</span><h3>Your brand, set up once</h3><p>Your colours, fonts and logo go into templates, so every post looks like it came from the same place.</p></div>
+      <div class="rule"><span class="num">3</span><h3>Pay your deposit</h3><p>A 50% deposit secures your booking and we start designing. The other 50% is due after you have received your designs.</p></div>
+      <div class="rule"><span class="num">4</span><h3>Receive your designs</h3><p>Your finished designs in every size you need: 4:5 for the feed, 9:16 for stories, landscape for menu screens, and print for flyers.</p></div>
+    </div>
+  </section>
+
+  <section id="enquire">
+    <div class="head">
+      <h2>Book a consult</h2>
+      <p>Tell us about your business and we'll get back to you to book a quick consult.</p>
+    </div>
+    <div class="enquire">
+      <div class="enquire-intro">
+        <p>No payment and no commitment. This just tells us what you love before we chat.</p>
+        <ol class="next-steps">
+          <li><span><strong>You send your details.</strong> It takes about two minutes.</span></li>
+          <li><span><strong>We reach out</strong> by WhatsApp, email or a call, whichever you prefer.</span></li>
+          <li><span><strong>A quick consult</strong> about your menu, your best sellers and the look you love, then your quote.</span></li>
+        </ol>
+      </div>
+      <div class="form-card">
+        <form id="enquiry" novalidate>
+          <p hidden><label>Leave this empty <input name="_honey" tabindex="-1" autocomplete="off"></label></p>
+          <div class="fgrid">
+            <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required><span class="err">Please add your name.</span></div>
+            <div class="field"><label for="f-biz">Business name</label><input id="f-biz" name="business" autocomplete="organization" required><span class="err">Please add your business name.</span></div>
+            <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required><span class="err">Please add a valid email.</span></div>
+            <div class="field"><label for="f-phone">Phone / WhatsApp</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" required><span class="err">Please add a phone or WhatsApp number.</span></div>
+            <div class="field"><label for="f-type">Type of business</label>
+              <select id="f-type" name="type" required><option value="">Choose one</option><option>Restaurant</option><option>Café or coffee shop</option><option>Bakery or cake shop</option><option>Sweets, desserts or ice cream</option><option>Fast food or takeaway</option><option>Juice, smoothie or bubble tea</option><option>Handmade products</option><option>Other</option></select>
+              <span class="err">Please choose one.</span></div>
+            <div class="field"><label for="f-ig">Instagram or website <span class="opt">(optional)</span></label><input id="f-ig" name="instagram" placeholder="@yourbusiness or yourbusiness.co.uk"></div>
+
+            <fieldset class="field full" id="pkg-field"><legend>Which package are you interested in?</legend>
+              <div class="choices">
+                <label class="choice"><input type="radio" name="package" value="Business Package"><b>Business</b><span>2 animated flyers, a menu, a logo and a logo video, plus a free full-page doodle</span></label>
+                <label class="choice"><input type="radio" name="package" value="Seasonal Package"><b>Seasonal</b><span>A full campaign for one big date, plus a free full-page doodle</span></label>
+                <label class="choice"><input type="radio" name="package" value="Not sure yet"><b>Not sure yet</b><span>We'll help you choose on the call</span></label>
+              </div>
+              <span class="err">Please choose a package, or "Not sure yet".</span></fieldset>
+            <div class="field full season-field" id="season-field" hidden><label for="f-season">Which season is your campaign for?</label>
+              <select id="f-season" name="season"><option value="">Choose a season</option><option>Bonfire Night (5 November)</option><option>Diwali (November)</option><option>Black Friday &amp; Cyber Monday</option><option>Christmas</option><option>New Year's Eve &amp; New Year's Day</option><option>Dry January &amp; Veganuary</option><option>Burns Night (25 January)</option><option>Lunar New Year</option><option>Ramadan &amp; Eid al-Fitr</option><option>Pancake Day</option><option>Valentine's Day</option><option>St David's Day (1 March)</option><option>Mother's Day</option><option>St Patrick's Day (17 March)</option><option>Easter</option><option>May bank holidays</option><option>Father's Day</option><option>Summer &amp; school holidays</option><option>Back to school</option><option>Halloween</option><option>Not sure yet, help me choose</option></select>
+              <span class="err">Please choose a season.</span></div>
+
+            <fieldset class="field full"><legend>What do you love? <span class="opt">(pick any)</span></legend>
+              <div class="chips">
+                <label class="chip"><input type="checkbox" name="loves" value="Bright &amp; bold"><span>Bright &amp; bold</span></label>
+                <label class="chip"><input type="checkbox" name="loves" value="Soft &amp; pastel"><span>Soft &amp; pastel</span></label>
+                <label class="chip"><input type="checkbox" name="loves" value="Cute characters"><span>Cute characters</span></label>
+                <label class="chip"><input type="checkbox" name="loves" value="Fun &amp; playful"><span>Fun &amp; playful</span></label>
+                <label class="chip"><input type="checkbox" name="loves" value="Clean &amp; minimal"><span>Clean &amp; minimal</span></label>
+                <label class="chip"><input type="checkbox" name="loves" value="Elegant"><span>Elegant</span></label>
+                <label class="chip"><input type="checkbox" name="loves" value="Mouth-watering close-ups"><span>Mouth-watering close-ups</span></label>
+                <label class="chip"><input type="checkbox" name="loves" value="Hand-drawn"><span>Hand-drawn</span></label>
+              </div></fieldset>
+            <div class="field full"><label for="f-about">Tell us about your business <span class="opt">(optional)</span></label>
+              <textarea id="f-about" name="about" placeholder="Your best sellers, the deals you want to push, accounts or brands whose look you love"></textarea></div>
+            <div class="field"><label for="f-reach">Best way to reach you</label>
+              <select id="f-reach" name="reach"><option>WhatsApp</option><option>Email</option><option>Phone call</option></select></div>
+            <div class="field"><label for="f-when">Best time for a consult</label>
+              <select id="f-when" name="when"><option>Any time</option><option>Mornings</option><option>Afternoons</option><option>Evenings</option><option>Weekends</option></select></div>
+          </div>
+          <div class="form-foot">
+            <button type="submit" class="btn primary">Request a consult</button>
+            <p class="mono">We only use your details to get back to you about your enquiry.</p>
+          </div>
+        </form>
+        <div class="sent" id="sent" hidden tabindex="-1">
+          <p class="kicker" id="sent-kicker">One last tap</p>
+          <h3 id="sent-title">Your enquiry is ready</h3>
+          <p id="sent-how">Send it to us with the button below. It opens with everything already written, so you just press send.</p>
+          <div class="send">
+            <a class="btn wa" id="send-wa" target="_blank" rel="noopener" hidden>Send on WhatsApp</a>
+            <a class="btn primary" id="send-mail" target="_blank" rel="noopener" hidden>Send by email</a>
+            <button type="button" class="btn" id="copy">Copy my details</button>
+          </div>
+          <p class="mono" id="sent-alt"></p>
+          <pre class="summary" id="summary"></pre>
+          <button type="button" class="linkish" id="edit">Edit my answers</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer><p class="mono">Elev8 Motion Studio · founded by Precious Muiambo</p></footer>
+</div>
+
+<script src="content/work.js"></script>
+<script>
+// Draws the work from content/work.js: the first two pieces fill the top of the page, the rest go to "Our work".
+(function () {
+  var W = window.WORK || [], P = window.PROCESS || [];
+  var SOUND = '<button type="button" class="sound" aria-label="Turn sound on"><svg viewBox="0 0 16 16"><path d="M2 6h3l4-3v10l-4-3H2z"/><path d="M11 5.5c1 .8 1 4.2 0 5" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/></svg><span>Sound on</span></button>';
+  var PLAYB = '<button type="button" class="play" aria-label="Play or pause"><svg viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z"/></svg></button>';
+  function esc(t) { return String(t == null ? "" : t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function isVideo(f) { return /\.(mp4|webm|mov)$/i.test(f || ""); }
+  function media(w, lazy) {
+    var src = "media/" + w.file;
+    if (isVideo(w.file)) return '<video src="' + esc(src) + '"' + (w.poster ? ' poster="media/' + esc(w.poster) + '"' : "") + ' muted loop playsinline preload="' + (lazy ? "none" : "metadata") + '" aria-label="' + esc(w.alt || w.title) + '"></video>' +
+      '<div class="ctrl">' + (w.sound ? SOUND : "") + PLAYB + '</div>';
+    return '<img src="' + esc(src) + '" alt="' + esc(w.alt || w.title) + '"' + (lazy ? ' loading="lazy"' : "") + '>';
+  }
+  function tags(w) { return (w.tags || []).length ? '<div class="tags">' + w.tags.map(function (t) { return '<span class="tag">' + esc(t) + '</span>'; }).join("") + '</div>' : ""; }
+  function card(w, lazy) {
+    return '<article class="piece"' + (w.id ? ' id="' + esc(w.id) + '"' : "") + '><div class="frame">' + media(w, lazy) + '</div>' +
+      '<h3>' + esc(w.title) + '</h3>' + (w.text ? '<p>' + esc(w.text) + '</p>' : "") + tags(w) + '</article>';
+  }
+  document.getElementById("newest").innerHTML = W.slice(0, 2).map(function (w) { return card(w, false); }).join("");
+  var older = W.slice(2), box = document.getElementById("older");
+  if (older.length === 1) {   // a single older piece gets the big feature layout
+    var w = older[0]; box.className = "work one";
+    box.innerHTML = '<article class="piece"' + (w.id ? ' id="' + esc(w.id) + '"' : "") + '><div class="frame">' + media(w, true) + '</div></article>' +
+      '<div class="feature-text">' + (w.kicker ? '<p class="kicker">' + esc(w.kicker) + '</p>' : "") + '<h3>' + esc(w.title) + '</h3>' + (w.text ? '<p>' + esc(w.text) + '</p>' : "") + tags(w) + '</div>';
+  } else box.innerHTML = older.map(function (w) { return card(w, true); }).join("");
+  document.getElementById("work").hidden = older.length === 0;
+  var HEART = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 14.2s-5.6-3.4-5.6-7.3A3.1 3.1 0 0 1 8 5a3.1 3.1 0 0 1 5.6 1.9c0 3.9-5.6 7.3-5.6 7.3z"/></svg>';
+  document.getElementById("process-list").innerHTML = P.map(function (p) {
+    var link = p.seeIn && W.filter(function (w) { return w.id === p.seeIn; })[0];
+    return '<article class="proc"><div class="phone">' + media(p, true) + '</div><div class="proc-text">' +
+      (p.kicker ? '<p class="kicker">' + esc(p.kicker) + '</p>' : "") +
+      '<span class="human">' + HEART + 'Made by a human · drawn by hand</span><h3>' + esc(p.title) + '</h3>' +
+      ((p.steps || []).length ? '<ol class="steps">' + p.steps.map(function (st) { return '<li><strong>' + esc(st[0]) + '</strong> ' + esc(st[1]) + '</li>'; }).join("") + '</ol>' : "") +
+      (link ? '<a class="result" href="#' + esc(link.id) + '"><img src="media/' + esc(link.poster || link.file) + '" alt=""><span><span class="mono">Where it ended up</span><br><strong>See it in "' + esc(link.title) + '"</strong></span></a>' : "") +
+      '</div></article>';
+  }).join("");
+  document.getElementById("process").hidden = P.length === 0;
+})();
+// Where enquiries go. Online, the form is emailed straight to CONTACT.email by FormSubmit (formsubmit.co, free, no
+// account; the very first enquiry sends Elev8 an "activate" email that must be clicked once). If that can't happen
+// (not activated yet, opened from a computer folder, or offline), the finished enquiry is handed to the visitor's own
+// email or WhatsApp app instead, already written and addressed.
+var CONTACT = { email: "elev8motionstudio@gmail.com", whatsapp: "27740208902" };   // whatsapp: international number, digits only, e.g. 447700900123
+(function () {
+  var form = document.getElementById("enquiry"), sent = document.getElementById("sent");
+  if (!form) return;
+  var seasonField = document.getElementById("season-field"), season = document.getElementById("f-season"), pkgField = document.getElementById("pkg-field");
+  function pkg() { var c = form.querySelector("input[name=package]:checked"); return c ? c.value : ""; }
+  function syncSeason() { var on = pkg() === "Seasonal Package"; seasonField.hidden = !on; season.required = on; if (!on) seasonField.classList.remove("bad"); }
+  function valid(el) {
+    if (!el.required) return true;
+    var v = (el.value || "").trim();
+    if (!v) return false;
+    if (el.type === "email") return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+    if (el.type === "tel") return v.replace(/[^0-9]/g, "").length >= 7;
+    return true;
+  }
+  form.addEventListener("change", function (e) {
+    if (e.target.name === "package") { syncSeason(); pkgField.classList.remove("bad"); }
+    var f = e.target.closest(".field"); if (f && f.classList.contains("bad") && valid(e.target)) f.classList.remove("bad");
+  });
+  // "Choose this package" preselects the package in the form
+  document.querySelectorAll("[data-choose]").forEach(function (a) {
+    a.addEventListener("click", function () { var r = form.querySelector('input[name=package][value="' + a.dataset.choose + '"]'); if (r) { r.checked = true; syncSeason(); pkgField.classList.remove("bad"); } });
+  });
+  function message(d) {
+    var get = function (k) { return String(d.get(k) || "").trim(); }, loves = d.getAll("loves"), BR = {};   // BR marks a blank line between groups
+    return [
+      "New consult request for Elev8 Motion Studio", BR,
+      "Name: " + get("name"),
+      "Business: " + get("business"),
+      "Type of business: " + get("type"),
+      get("instagram") && "Instagram or website: " + get("instagram"),
+      "Email: " + get("email"),
+      "Phone / WhatsApp: " + get("phone"), BR,
+      "Package: " + pkg(),
+      pkg() === "Seasonal Package" && "Season: " + get("season"),
+      loves.length && "What I love: " + loves.join(", "),
+      get("about") && "About my business: " + get("about"), BR,
+      "Best way to reach me: " + get("reach"),
+      "Best time for a consult: " + get("when")
+    ].filter(function (l) { return l === BR || (typeof l === "string" && l); }).map(function (l) { return l === BR ? "" : l; }).join("\n");
+  }
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var first = null;
+    form.querySelectorAll("input[required], select[required]").forEach(function (el) {
+      var ok = valid(el); el.closest(".field").classList.toggle("bad", !ok); if (!ok && !first) first = el;
+    });
+    var hasPkg = !!pkg(); pkgField.classList.toggle("bad", !hasPkg);
+    if (!hasPkg && !first) first = pkgField.querySelector("input");
+    if (first) { first.focus(); return; }
+    var d = new FormData(form), text = message(d), subject = "Consult request: " + String(d.get("business")).trim() + " (" + pkg() + ")";
+    var btn = form.querySelector("button[type=submit]"), label = btn.textContent;
+    var online = /^https?:$/.test(location.protocol) && !/^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+    if (online && CONTACT.email && !btn.disabled) {
+      btn.disabled = true; btn.textContent = "Sending…";
+      var get = function (k) { return String(d.get(k) || "").trim(); };
+      var fields = { "Name": get("name"), "Business": get("business"), "Type of business": get("type"), "Instagram or website": get("instagram"),
+        "Email": get("email"), "Phone / WhatsApp": get("phone"), "Package": pkg(), "Season": pkg() === "Seasonal Package" ? get("season") : "",
+        "What they love": d.getAll("loves").join(", "), "About the business": get("about"), "Best way to reach them": get("reach"), "Best time for a consult": get("when") };
+      Object.keys(fields).forEach(function (k) { if (!fields[k]) delete fields[k]; });
+      fields._subject = subject; fields._replyto = get("email"); fields._template = "table"; fields._honey = get("_honey");
+      fetch("https://formsubmit.co/ajax/" + CONTACT.email, { method: "POST", headers: { "Content-Type": "application/json", "Accept": "application/json" }, body: JSON.stringify(fields) })
+        .then(function (r) { return r.json(); })
+        .then(function (j) { if (String(j && j.success) !== "true") throw new Error(j && j.message); show(text, subject, true); })
+        .catch(function () { show(text, subject, false); })
+        .then(function () { btn.disabled = false; btn.textContent = label; });
+      return;
+    }
+    show(text, subject, false);
+  });
+  function show(text, subject, saved) {
+    document.getElementById("summary").textContent = text;
+    var wa = document.getElementById("send-wa"), mail = document.getElementById("send-mail"), waNum = (CONTACT.whatsapp || "").replace(/[^0-9]/g, "");
+    wa.hidden = !waNum; if (waNum) wa.href = "https://wa.me/" + waNum + "?text=" + encodeURIComponent(text);
+    mail.hidden = !CONTACT.email; if (CONTACT.email) mail.href = "mailto:" + CONTACT.email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(text);
+    document.getElementById("sent-alt").textContent = CONTACT.email ? "Email app not opening? Copy your details and send them to " + CONTACT.email + "." : "";
+    if (!waNum && !CONTACT.email) document.getElementById("sent-how").textContent = "Copy your details below and send them to us.";
+    document.getElementById("sent-kicker").textContent = saved ? "Enquiry sent" : "One last tap";
+    document.getElementById("sent-title").textContent = saved ? "Thank you!" : "Your enquiry is ready";
+    if (saved) {
+      document.getElementById("sent-how").textContent = "We've got your details and will be in touch soon to book your consult. Want to talk sooner? Message us on WhatsApp.";
+      mail.hidden = true; document.getElementById("sent-alt").textContent = "";
+    } else if (waNum || CONTACT.email) document.getElementById("sent-how").textContent = "Send it to us with the button below. It opens with everything already written, so you just press send.";
+    form.hidden = true; sent.hidden = false; sent.focus({ preventScroll: true });
+    sent.closest(".form-card").scrollIntoView({ block: "start", behavior: "smooth" });
+  }
+  document.getElementById("edit").addEventListener("click", function () { sent.hidden = true; form.hidden = false; form.querySelector("input:not([type=hidden])").focus(); });
+  document.getElementById("copy").addEventListener("click", function () {
+    var b = this, t = document.getElementById("summary").textContent;
+    function done(ok) { b.textContent = ok ? "Copied" : "Select the text below to copy"; setTimeout(function () { b.textContent = "Copy my details"; }, 2200); }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function () { done(true); }, function () { done(false); });
+    else done(false);
+  });
+})();
+(function () {
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var vids = Array.prototype.slice.call(document.querySelectorAll("video"));
+  var PLAY = '<svg viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z"/></svg>';
+  var PAUSE = '<svg viewBox="0 0 16 16"><path d="M4 2.5h3v11H4zM9 2.5h3v11H9z"/></svg>';
+  // If a video file can't be streamed directly, load it as data and play it from memory instead.
+  function rescue(v) {
+    if (v.dataset.rescued) return; v.dataset.rescued = "1";
+    var src = v.getAttribute("src"); if (!src || src.indexOf("blob:") === 0) return;
+    fetch(src).then(function (r) { return r.blob(); }).then(function (blob) {
+      var t = v.currentTime || 0; v.src = URL.createObjectURL(blob); v.load(); v.currentTime = t;
+      if (v.dataset.want === "1") start(v);
+    }).catch(function () {});
+  }
+  function start(v) {
+    v.dataset.want = "1";
+    var p = v.play();
+    if (p && p.catch) p.catch(function (err) {
+      // only a genuine autoplay refusal needs the tap button; an interrupted start is harmless
+      if (err && err.name === "NotAllowedError") { var tap = v.parentNode.querySelector(".tap"); if (tap) tap.hidden = false; }
+    });
+  }
+  vids.forEach(function (v) {
+    var box = v.parentNode, b = box.querySelector(".play"), s = box.querySelector(".sound");
+    // a big "tap to play" button, shown only if the browser refuses to start the video by itself
+    var tap = document.createElement("button"); tap.type = "button"; tap.className = "tap"; tap.hidden = true;
+    tap.innerHTML = '<span><svg viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z"/></svg>Tap to play</span>';
+    tap.addEventListener("click", function () { tap.hidden = true; v.dataset.user = "1"; start(v); });
+    box.appendChild(tap);
+    function icon() { if (b) b.innerHTML = v.paused ? PLAY : PAUSE; if (!v.paused) tap.hidden = true; }
+    v.addEventListener("play", icon); v.addEventListener("pause", icon);
+    v.addEventListener("error", function () { rescue(v); });
+    if (b) b.addEventListener("click", function () { v.dataset.user = "1"; if (v.paused) start(v); else { v.dataset.want = ""; v.pause(); } });
+    if (s) s.addEventListener("click", function () {
+      v.muted = !v.muted; s.querySelector("span").textContent = v.muted ? "Sound on" : "Sound off";
+      s.setAttribute("aria-label", v.muted ? "Turn sound on" : "Turn sound off");
+      if (!v.muted) { v.dataset.user = "1"; v.currentTime = 0; v.volume = 1; start(v); }
+    });
+    // if nothing has loaded after a few seconds of trying, switch to the data fallback
+    v.addEventListener("loadstart", function () { setTimeout(function () { if (v.readyState < 2 && v.dataset.want === "1") rescue(v); }, 3500); });
+  });
+  // play videos that are mostly on screen, pause the rest (checked on load, scroll and resize)
+  function onScreen(v) {
+    var r = v.getBoundingClientRect(), vh = window.innerHeight || document.documentElement.clientHeight;
+    var shown = Math.min(r.bottom, vh) - Math.max(r.top, 0);
+    return r.height > 0 && shown / Math.min(r.height, vh) > 0.4;
+  }
+  function check() {
+    vids.forEach(function (v) {
+      if (onScreen(v)) { if (!reduce && v.dataset.user !== "1" && v.paused) { v.preload = "auto"; start(v); } }
+      else if (!v.paused) { v.pause(); v.dataset.want = ""; v.dataset.user = ""; }
+    });
+  }
+  var queued = false;
+  function soon() { if (queued) return; queued = true; setTimeout(function () { queued = false; check(); }, 120); }
+  window.addEventListener("scroll", soon, { passive: true });
+  window.addEventListener("resize", soon);
+  window.addEventListener("load", check);
+  check(); setTimeout(check, 600);
+})();
+</script>
+</body>
+</html>
