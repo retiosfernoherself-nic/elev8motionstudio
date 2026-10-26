@@ -485,7 +485,7 @@ footer { padding-block: 24px 40px; border-top: 1px solid var(--line); }
   function isVideo(f) { return /\.(mp4|webm|mov)$/i.test(f || ""); }
   function media(w, lazy) {
     var src = "media/" + w.file;
-    if (isVideo(w.file)) return '<video src="' + esc(src) + '"' + (w.poster ? ' poster="media/' + esc(w.poster) + '"' : "") + ' muted loop playsinline preload="' + (lazy ? "none" : "metadata") + '" aria-label="' + esc(w.alt || w.title) + '"></video>' +
+    if (isVideo(w.file)) return '<video src="' + esc(src) + '"' + (w.poster ? ' poster="media/' + esc(w.poster) + '"' : "") + ' muted loop playsinline preload="metadata" aria-label="' + esc(w.alt || w.title) + '"></video>' +
       '<div class="ctrl">' + (w.sound ? SOUND : "") + PLAYB + '</div>';
     return '<img src="' + esc(src) + '" alt="' + esc(w.alt || w.title) + '"' + (lazy ? ' loading="lazy"' : "") + '>';
   }
@@ -612,65 +612,34 @@ var CONTACT = { email: "elev8motionstudio@gmail.com", whatsapp: "27740208902" };
     else done(false);
   });
 })();
+// Videos never start by themselves (phones often block that). Each one shows its poster with a big "Tap to play"
+// button; tapping plays it, with sound if it has any, and pauses any other video that is playing.
 (function () {
-  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var vids = Array.prototype.slice.call(document.querySelectorAll("video"));
   var PLAY = '<svg viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z"/></svg>';
   var PAUSE = '<svg viewBox="0 0 16 16"><path d="M4 2.5h3v11H4zM9 2.5h3v11H9z"/></svg>';
-  // If a video file can't be streamed directly, load it as data and play it from memory instead.
-  function rescue(v) {
-    if (v.dataset.rescued) return; v.dataset.rescued = "1";
-    var src = v.getAttribute("src"); if (!src || src.indexOf("blob:") === 0) return;
-    fetch(src).then(function (r) { return r.blob(); }).then(function (blob) {
-      var t = v.currentTime || 0; v.src = URL.createObjectURL(blob); v.load(); v.currentTime = t;
-      if (v.dataset.want === "1") start(v);
-    }).catch(function () {});
-  }
-  function start(v) {
-    v.dataset.want = "1";
-    var p = v.play();
-    if (p && p.catch) p.catch(function (err) {
-      // only a genuine autoplay refusal needs the tap button; an interrupted start is harmless
-      if (err && err.name === "NotAllowedError") { var tap = v.parentNode.querySelector(".tap"); if (tap) tap.hidden = false; }
-    });
-  }
   vids.forEach(function (v) {
+    v.removeAttribute("autoplay"); v.autoplay = false; v.preload = "metadata";
     var box = v.parentNode, b = box.querySelector(".play"), s = box.querySelector(".sound");
-    // a big "tap to play" button, shown only if the browser refuses to start the video by itself
-    var tap = document.createElement("button"); tap.type = "button"; tap.className = "tap"; tap.hidden = true;
+    var tap = document.createElement("button"); tap.type = "button"; tap.className = "tap";
+    tap.setAttribute("aria-label", "Play video");
     tap.innerHTML = '<span><svg viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z"/></svg>Tap to play</span>';
-    tap.addEventListener("click", function () { tap.hidden = true; v.dataset.user = "1"; start(v); });
     box.appendChild(tap);
-    function icon() { if (b) b.innerHTML = v.paused ? PLAY : PAUSE; if (!v.paused) tap.hidden = true; }
-    v.addEventListener("play", icon); v.addEventListener("pause", icon);
-    v.addEventListener("error", function () { rescue(v); });
-    if (b) b.addEventListener("click", function () { v.dataset.user = "1"; if (v.paused) start(v); else { v.dataset.want = ""; v.pause(); } });
-    if (s) s.addEventListener("click", function () {
-      v.muted = !v.muted; s.querySelector("span").textContent = v.muted ? "Sound on" : "Sound off";
-      s.setAttribute("aria-label", v.muted ? "Turn sound on" : "Turn sound off");
-      if (!v.muted) { v.dataset.user = "1"; v.currentTime = 0; v.volume = 1; start(v); }
-    });
-    // if nothing has loaded after a few seconds of trying, switch to the data fallback
-    v.addEventListener("loadstart", function () { setTimeout(function () { if (v.readyState < 2 && v.dataset.want === "1") rescue(v); }, 3500); });
+    function soundLabel() { if (!s) return; s.querySelector("span").textContent = v.muted ? "Sound on" : "Sound off"; s.setAttribute("aria-label", v.muted ? "Turn sound on" : "Turn sound off"); }
+    function play() {
+      vids.forEach(function (o) { if (o !== v && !o.paused) o.pause(); });
+      if (s) { v.muted = false; v.volume = 1; soundLabel(); }   // a tap allows sound, so videos with sound play with it
+      var p = v.play();
+      if (p && p.catch) p.catch(function () { v.muted = true; soundLabel(); v.play().catch(function () {}); });   // sound refused: play silently
+    }
+    function sync() { tap.hidden = !v.paused; if (b) b.innerHTML = v.paused ? PLAY : PAUSE; }
+    v.addEventListener("play", sync); v.addEventListener("pause", sync);
+    tap.addEventListener("click", play);
+    v.addEventListener("click", function () { if (!v.paused) v.pause(); });   // tap a playing video to pause it
+    if (b) b.addEventListener("click", function (e) { e.stopPropagation(); if (v.paused) play(); else v.pause(); });
+    if (s) s.addEventListener("click", function (e) { e.stopPropagation(); v.muted = !v.muted; soundLabel(); if (v.paused && !v.muted) play(); });
+    sync();
   });
-  // play videos that are mostly on screen, pause the rest (checked on load, scroll and resize)
-  function onScreen(v) {
-    var r = v.getBoundingClientRect(), vh = window.innerHeight || document.documentElement.clientHeight;
-    var shown = Math.min(r.bottom, vh) - Math.max(r.top, 0);
-    return r.height > 0 && shown / Math.min(r.height, vh) > 0.4;
-  }
-  function check() {
-    vids.forEach(function (v) {
-      if (onScreen(v)) { if (!reduce && v.dataset.user !== "1" && v.paused) { v.preload = "auto"; start(v); } }
-      else if (!v.paused) { v.pause(); v.dataset.want = ""; v.dataset.user = ""; }
-    });
-  }
-  var queued = false;
-  function soon() { if (queued) return; queued = true; setTimeout(function () { queued = false; check(); }, 120); }
-  window.addEventListener("scroll", soon, { passive: true });
-  window.addEventListener("resize", soon);
-  window.addEventListener("load", check);
-  check(); setTimeout(check, 600);
 })();
 </script>
 </body>
