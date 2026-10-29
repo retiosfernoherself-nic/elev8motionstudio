@@ -93,6 +93,8 @@ p { margin: 0; }
 .btn { display: inline-flex; align-items: center; text-decoration: none; padding: 12px 22px; border-radius: 999px; border: 2px solid var(--grey); color: var(--ink); background: rgba(255, 255, 255, .35); font: inherit; font-weight: 700; cursor: pointer; }
 .btn.primary { border-color: transparent; color: #fff; background: linear-gradient(135deg, #f19bc0, #c4a6f2 60%, #9fc8f4); box-shadow: 0 10px 24px rgba(196, 166, 242, .45); text-shadow: 0 1px 2px rgba(80, 50, 90, .25); }
 .btn:focus-visible, button:focus-visible { outline: 3px solid var(--lilac); outline-offset: 3px; }
+.hero.solo { grid-template-columns: minmax(0, 1fr); }
+.hero.solo .stage { display: none; }
 .stage { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; align-items: start; }
 .stage .piece:nth-child(2) { margin-top: 36px; }
 
@@ -191,6 +193,7 @@ section { padding-block: 60px; border-top: 1px solid var(--line); }
 .incl li { display: grid; grid-template-columns: 48px minmax(0, 1fr); align-items: center; gap: 12px; padding-block: 12px; border-top: 1px dashed var(--line); font-weight: 600; }
 .pack .choose { justify-self: start; }
 .quote { font-weight: 600; color: var(--grey); font-size: 15px; }
+.digital { justify-self: start; font-family: var(--f-mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--grey); padding: 4px 10px; border-radius: 999px; background: var(--grey-soft); }
 .incl .bonus { color: var(--ink); }
 .free { display: inline-block; margin-left: 8px; padding: 2px 10px; border-radius: 999px; vertical-align: 2px; font: 700 11.5px var(--f-body); letter-spacing: .08em; text-transform: uppercase; color: #37343b;
   background: linear-gradient(135deg, #ffd3e4, #fff2c2 45%, #cdeedd 75%, #dccdff); box-shadow: 0 4px 10px rgba(185, 163, 239, .3); }
@@ -346,7 +349,7 @@ footer { padding-block: 24px 40px; border-top: 1px solid var(--line); }
   <section id="packages">
     <div class="head">
       <h2>Packages</h2>
-      <p>Two ways to get your brand moving. Every piece is designed for your business from scratch, and we agree the details on a quick consult first.</p>
+      <p>Two ways to get your brand moving. Every piece is drawn for your business from scratch and delivered digitally, and we agree the details on a quick consult first.</p>
     </div>
     <div class="packages">
       <article class="pack">
@@ -356,12 +359,10 @@ footer { padding-block: 24px 40px; border-top: 1px solid var(--line); }
           <p class="price"><span class="cur">£</span>360</p>
         </div>
         <ul class="incl">
-          <li><span class="qty">2</span>Animated flyers</li>
-          <li><span class="qty">1</span>Animated menu</li>
-          <li><span class="qty">1</span>Original logo</li>
-          <li><span class="qty">1</span>Original animated logo video</li>
-          <li class="bonus"><span class="qty">1</span><span>Full-page doodle<span class="free">Free</span></span></li>
+          <li><span class="qty">1</span>Page of your products as a doodle</li>
+          <li><span class="qty">2</span>Characters drawn from your products</li>
         </ul>
+        <p class="digital">All designs are digital</p>
         <p class="quote">Start with a quick <strong>consult call</strong>, then a 50% deposit secures your booking.</p>
         <a class="btn primary choose" href="#enquire" data-choose="Business Package">Choose this package</a>
       </article>
@@ -372,12 +373,11 @@ footer { padding-block: 24px 40px; border-top: 1px solid var(--line); }
           <p class="price"><span class="cur">£</span>580</p>
         </div>
         <ul class="incl">
-          <li><span class="qty">4</span>Flyers</li>
-          <li><span class="qty">1</span>Fun product animation video</li>
-          <li><span class="qty">8</span>Animated product character stickers</li>
-          <li><span class="qty">1</span>Build-up animation video</li>
-          <li class="bonus"><span class="qty">1</span><span>Full-page doodle<span class="free">Free</span></span></li>
+          <li><span class="qty">1</span>Seasonal full-page doodle</li>
+          <li><span class="qty">1</span>Seasonal themed menu</li>
+          <li><span class="qty">6</span>Characters in your season's design theme</li>
         </ul>
+        <p class="digital">All designs are digital</p>
         <p class="quote">Start with a quick <strong>consult call</strong>, then a 50% deposit secures your booking.</p>
         <a class="btn primary choose" href="#enquire" data-choose="Seasonal Package">Choose this package</a>
       </article>
@@ -390,7 +390,7 @@ footer { padding-block: 24px 40px; border-top: 1px solid var(--line); }
       <div class="rule"><span class="num">1</span><h3>A quick chat</h3><p>Your menu, your best sellers, the deals you want to push and the look you like.</p></div>
       <div class="rule"><span class="num">2</span><h3>Your brand, set up once</h3><p>Your colours, fonts and logo go into templates, so every post looks like it came from the same place.</p></div>
       <div class="rule"><span class="num">3</span><h3>Pay your deposit</h3><p>A 50% deposit secures your booking and we start designing. The other 50% is due after you have received your designs.</p></div>
-      <div class="rule"><span class="num">4</span><h3>Receive your designs</h3><p>Your finished designs in every size you need: 4:5 for the feed, 9:16 for stories, landscape for menu screens, and print for flyers.</p></div>
+      <div class="rule"><span class="num">4</span><h3>Receive your designs</h3><p>Your finished designs, delivered digitally and sized for your feed, stories and menu screens.</p></div>
     </div>
   </section>
 
@@ -405,7 +405,7 @@ footer { padding-block: 24px 40px; border-top: 1px solid var(--line); }
         <ol class="next-steps">
           <li><span><strong>You send your details.</strong> It takes about two minutes.</span></li>
           <li><span><strong>We reach out</strong> by WhatsApp, email or a call, whichever you prefer.</span></li>
-          <li><span><strong>A quick consult</strong> about your menu, your best sellers and the look you love, then your quote.</span></li>
+          <li><span><strong>A quick consult</strong> about your products, your best sellers and the look you love, then we book you in.</span></li>
         </ol>
       </div>
       <div class="form-card">
@@ -423,8 +423,8 @@ footer { padding-block: 24px 40px; border-top: 1px solid var(--line); }
 
             <fieldset class="field full" id="pkg-field"><legend>Which package are you interested in?</legend>
               <div class="choices">
-                <label class="choice"><input type="radio" name="package" value="Business Package"><b>Business</b><span>2 animated flyers, a menu, a logo and a logo video, plus a free full&#8209;page doodle</span></label>
-                <label class="choice"><input type="radio" name="package" value="Seasonal Package"><b>Seasonal</b><span>A full campaign for one big date, plus a free full&#8209;page doodle</span></label>
+                <label class="choice"><input type="radio" name="package" value="Business Package"><b>Business</b><span>A page of your products as a doodle, plus 2 characters drawn from your products</span></label>
+                <label class="choice"><input type="radio" name="package" value="Seasonal Package"><b>Seasonal</b><span>A seasonal full&#8209;page doodle, a seasonal themed menu and 6 seasonal characters</span></label>
                 <label class="choice"><input type="radio" name="package" value="Not sure yet"><b>Not sure yet</b><span>We'll help you choose on the call</span></label>
               </div>
               <span class="err">Please choose a package, or "Not sure yet".</span></fieldset>
@@ -496,6 +496,7 @@ footer { padding-block: 24px 40px; border-top: 1px solid var(--line); }
       '<h3>' + esc(w.title) + '</h3>' + (w.text ? '<p>' + esc(w.text) + '</p>' : "") + tags(w) + '</article>';
   }
   document.getElementById("newest").innerHTML = W.slice(0, 2).map(function (w) { return card(w, false); }).join("");
+  document.querySelector(".hero").classList.toggle("solo", W.length === 0);
   var older = W.slice(2), box = document.getElementById("older");
   if (older.length === 1) {   // a single older piece gets the big feature layout
     var w = older[0]; box.className = "work one";
