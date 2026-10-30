@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Elev8 Motion Studio · Hand-drawn doodles & characters for every kind of business</title>
-<meta name="description" content="Elev8 Motion Studio turns your products into hand-drawn doodles, characters, menus and animated logos for every kind of business. All delivered digitally. Founded by Precious Muiambo.">
+<meta name="description" content="Elev8 Motion Studio turns your products into hand-drawn doodles, character stickers, menus and logos for every kind of business. All delivered digitally. Founded by Precious Muiambo.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Elev8 Motion Studio">
 <meta property="og:description" content="Hand-drawn doodles, characters and menus that make people stop scrolling, for every kind of business.">
@@ -325,7 +325,7 @@ footer { padding-block: 24px 40px; border-top: 1px solid var(--line); }
       <p class="kicker">Hand-drawn doodles &amp; characters for every kind of business</p>
       <h1>Elev8<br><span class="accent">Motion Studio</span></h1>
       <p class="lede">Hand-drawn doodles and characters that make people stop scrolling before they've read a word.</p>
-      <p class="sub">Whatever you sell, we turn it into playful artwork: cafés and bakeries, salons and boutiques, florists, makers and more. A full page of your best-sellers as a doodle, characters drawn from your products, themed menus, animated logos and seasonal designs for every big date. All delivered digitally.</p>
+      <p class="sub">Whatever you sell, we turn it into playful artwork: cafés and bakeries, salons and boutiques, florists, makers and more. A full page of your best-sellers as a doodle, characters drawn from your products, themed menus, logo designs and seasonal designs for every big date. All delivered digitally.</p>
       <div class="cta">
         <a class="btn primary" href="#enquire">Book a consult</a>
         <a class="btn" href="#packages">See our packages</a>
@@ -403,20 +403,20 @@ footer { padding-block: 24px 40px; border-top: 1px solid var(--line); }
       <article class="pack mixed">
         <div class="pack-top">
           <p class="kicker">5 items in total, mixed however you like</p>
-          <h3>Pick &amp; Mix Package</h3>
+          <h3>Custom Built Package</h3>
           <p class="price"><span class="cur">£</span>800</p>
         </div>
-        <p class="pick-note">Each design below counts as <strong>1 item</strong>. Keep adding items until you have <strong>5 in total</strong>: one of each, or the same design more than once (5 doodles, 5 stickers, or 2 doodles and 3 stickers).</p>
+        <p class="pick-note">Each design below counts as <strong>1 item</strong>. Keep adding items until you have <strong>5 in total</strong>: one of each, or the same design more than once (5 page doodles, or 2 page doodles and 3 sticker sets).</p>
         <ul class="incl pick">
           <li><span class="qty">1</span>Page doodle of your products</li>
-          <li><span class="qty">1</span>Product character sticker</li>
+          <li><span class="qty">1</span>Set of 6 product character stickers</li>
           <li><span class="qty">1</span>Character-themed menu</li>
-          <li><span class="qty">1</span>Animated logo</li>
+          <li><span class="qty">1</span>Logo design</li>
           <li><span class="qty">1</span><span>Doodle brand pattern<span class="new">New</span></span></li>
         </ul>
         <p class="digital">All designs are digital</p>
         <p class="quote">Start with a quick <strong>consult call</strong>, then a 50% deposit secures your booking.</p>
-        <a class="btn primary choose" href="#enquire" data-choose="Pick &amp; Mix Package">Choose this package</a>
+        <a class="btn primary choose" href="#enquire" data-choose="Custom Built Package">Choose this package</a>
       </article>
     </div>
   </section>
@@ -462,7 +462,7 @@ footer { padding-block: 24px 40px; border-top: 1px solid var(--line); }
               <div class="choices">
                 <label class="choice"><input type="radio" name="package" value="Business Package"><b>Business</b><span>A page of your products as a doodle, plus 2 characters drawn from your products</span></label>
                 <label class="choice"><input type="radio" name="package" value="Seasonal Package"><b>Seasonal</b><span>A seasonal full&#8209;page doodle, a seasonal themed menu and 6 seasonal characters</span></label>
-                <label class="choice"><input type="radio" name="package" value="Pick &amp; Mix Package"><b>Pick &amp; Mix</b><span>5 items in total, 1 design per item, mixed however you like</span></label>
+                <label class="choice"><input type="radio" name="package" value="Custom Built Package"><b>Custom Built</b><span>5 items in total, 1 design per item, mixed however you like</span></label>
                 <label class="choice"><input type="radio" name="package" value="Not sure yet"><b>Not sure yet</b><span>We'll help you choose on the call</span></label>
               </div>
               <span class="err">Please choose a package, or "Not sure yet".</span></fieldset>
@@ -563,12 +563,12 @@ footer { padding-block: 24px 40px; border-top: 1px solid var(--line); }
 // (not activated yet, opened from a computer folder, or offline), the finished enquiry is handed to the visitor's own
 // email or WhatsApp app instead, already written and addressed.
 var CONTACT = { email: "elev8motionstudio@gmail.com", whatsapp: "27740208902" };   // whatsapp: international number, digits only, e.g. 447700900123
-// The designs a Pick & Mix client chooses from. Each one picked is 1 item, up to MIX_MAX items in total, any mix.
+// The designs a Custom Built client chooses from. Each one picked is 1 item, up to MIX_MAX items in total, any mix.
 var MIX_MAX = 5, MIX = [
   ["Page doodle", "A full page of your products as one doodle"],
-  ["Product character sticker", "One of your products drawn as a character sticker"],
+  ["Set of 6 product character stickers", "Six of your products drawn as character stickers (the set counts as 1 item)"],
   ["Character-themed menu", "Your menu or price list, decorated with your characters"],
-  ["Animated logo", "Your logo brought to life in a short animation"],
+  ["Logo design", "A still logo designed for your brand"],
   ["Doodle brand pattern", "Your products drawn into a repeat pattern for packaging, bags, cups and backgrounds"]
 ];
 (function () {
@@ -577,7 +577,7 @@ var MIX_MAX = 5, MIX = [
   var seasonField = document.getElementById("season-field"), season = document.getElementById("f-season"), pkgField = document.getElementById("pkg-field");
   function pkg() { var c = form.querySelector("input[name=package]:checked"); return c ? c.value : ""; }
   function syncSeason() { var on = pkg() === "Seasonal Package"; seasonField.hidden = !on; season.required = on; if (!on) seasonField.classList.remove("bad"); syncMix(); }
-  // Pick & Mix: a − / + counter per design, never more than MIX_MAX in total
+  // Custom Built: a − / + counter per design, never more than MIX_MAX in total
   var mixField = document.getElementById("mix-field"), mixBox = document.getElementById("mix"), counts = MIX.map(function () { return 0; });
   mixBox.innerHTML = MIX.map(function (m, i) {
     return '<div class="mix-row"><span><b>' + m[0] + '</b><small>' + m[1] + '</small></span><div class="step">' +
@@ -601,7 +601,7 @@ var MIX_MAX = 5, MIX = [
     if (d > 0 && total() >= MIX_MAX) return;
     counts[i] = Math.max(0, counts[i] + d); if (total()) mixField.classList.remove("bad"); drawMix();
   });
-  function syncMix() { var on = pkg() === "Pick & Mix Package"; mixField.hidden = !on; if (!on) mixField.classList.remove("bad"); }
+  function syncMix() { var on = pkg() === "Custom Built Package"; mixField.hidden = !on; if (!on) mixField.classList.remove("bad"); }
   drawMix();
   function valid(el) {
     if (!el.required) return true;
@@ -631,7 +631,7 @@ var MIX_MAX = 5, MIX = [
       "Phone / WhatsApp: " + get("phone"), BR,
       "Package: " + pkg(),
       pkg() === "Seasonal Package" && "Season: " + get("season"),
-      pkg() === "Pick & Mix Package" && "My items (" + total() + " of " + MIX_MAX + "): " + picks(),
+      pkg() === "Custom Built Package" && "My items (" + total() + " of " + MIX_MAX + "): " + picks(),
       loves.length && "What I love: " + loves.join(", "),
       get("about") && "About my business: " + get("about"), BR,
       "Best way to reach me: " + get("reach"),
@@ -646,7 +646,7 @@ var MIX_MAX = 5, MIX = [
     });
     var hasPkg = !!pkg(); pkgField.classList.toggle("bad", !hasPkg);
     if (!hasPkg && !first) first = pkgField.querySelector("input");
-    var mixBad = pkg() === "Pick & Mix Package" && !total(); mixField.classList.toggle("bad", mixBad);
+    var mixBad = pkg() === "Custom Built Package" && !total(); mixField.classList.toggle("bad", mixBad);
     if (mixBad && !first) first = mixBox.querySelector('[data-d="1"]');
     if (first) { first.focus(); return; }
     var d = new FormData(form), text = message(d), subject = "Consult request: " + String(d.get("business")).trim() + " (" + pkg() + ")";
@@ -656,7 +656,7 @@ var MIX_MAX = 5, MIX = [
       btn.disabled = true; btn.textContent = "Sending…";
       var get = function (k) { return String(d.get(k) || "").trim(); };
       var fields = { "Name": get("name"), "Business": get("business"), "Type of business": get("type"), "Instagram or website": get("instagram"),
-        "Email": get("email"), "Phone / WhatsApp": get("phone"), "Package": pkg(), "Season": pkg() === "Seasonal Package" ? get("season") : "", "Items": pkg() === "Pick & Mix Package" ? total() + " of " + MIX_MAX + ": " + picks() : "",
+        "Email": get("email"), "Phone / WhatsApp": get("phone"), "Package": pkg(), "Season": pkg() === "Seasonal Package" ? get("season") : "", "Items": pkg() === "Custom Built Package" ? total() + " of " + MIX_MAX + ": " + picks() : "",
         "What they love": d.getAll("loves").join(", "), "About the business": get("about"), "Best way to reach them": get("reach"), "Best time for a consult": get("when") };
       Object.keys(fields).forEach(function (k) { if (!fields[k]) delete fields[k]; });
       fields._subject = subject; fields._replyto = get("email"); fields._template = "table"; fields._honey = get("_honey");
