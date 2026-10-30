@@ -201,7 +201,6 @@ section { padding-block: 60px; border-top: 1px solid var(--line); }
 .pack.mixed::before { background: linear-gradient(90deg, #cdeedd, #fff2c2 25%, #ffc6dc 50%, #dccdff 75%, #cfe6ff); }
 .pick-note { font-weight: 600; color: var(--grey); font-size: 15px; }
 .pick-note strong { color: var(--ink); }
-.incl.pick .qty { font-size: 20px; }
 .incl .new { display: inline-block; margin-left: 8px; padding: 2px 9px; border-radius: 999px; vertical-align: 2px; font: 700 11px var(--f-body); letter-spacing: .08em; text-transform: uppercase; color: #37343b;
   background: linear-gradient(135deg, #ffd3e4, #fff2c2 45%, #cdeedd 75%, #dccdff); }
 @media (max-width: 1180px) and (min-width: 961px) { .packages { grid-template-columns: repeat(2, minmax(0, 1fr)); } .pack.mixed { grid-column: 1 / -1; } }
@@ -403,17 +402,17 @@ footer { padding-block: 24px 40px; border-top: 1px solid var(--line); }
       </article>
       <article class="pack mixed">
         <div class="pack-top">
-          <p class="kicker">Any 5 designs, mixed however you like</p>
+          <p class="kicker">5 items in total, mixed however you like</p>
           <h3>Pick &amp; Mix Package</h3>
           <p class="price"><span class="cur">£</span>800</p>
         </div>
-        <p class="pick-note">Choose <strong>5 designs</strong> from these. Pick one of each, or 5 of the same: five doodles, five stickers, it's up to you.</p>
+        <p class="pick-note">Each design below counts as <strong>1 item</strong>. Keep adding items until you have <strong>5 in total</strong>: one of each, or the same design more than once (5 doodles, 5 stickers, or 2 doodles and 3 stickers).</p>
         <ul class="incl pick">
-          <li><span class="qty">✦</span>Page doodle of your products</li>
-          <li><span class="qty">✦</span>Product character sticker</li>
-          <li><span class="qty">✦</span>Character-themed menu</li>
-          <li><span class="qty">✦</span>Animated logo</li>
-          <li><span class="qty">✦</span><span>Doodle brand pattern<span class="new">New</span></span></li>
+          <li><span class="qty">1</span>Page doodle of your products</li>
+          <li><span class="qty">1</span>Product character sticker</li>
+          <li><span class="qty">1</span>Character-themed menu</li>
+          <li><span class="qty">1</span>Animated logo</li>
+          <li><span class="qty">1</span><span>Doodle brand pattern<span class="new">New</span></span></li>
         </ul>
         <p class="digital">All designs are digital</p>
         <p class="quote">Start with a quick <strong>consult call</strong>, then a 50% deposit secures your booking.</p>
@@ -463,17 +462,17 @@ footer { padding-block: 24px 40px; border-top: 1px solid var(--line); }
               <div class="choices">
                 <label class="choice"><input type="radio" name="package" value="Business Package"><b>Business</b><span>A page of your products as a doodle, plus 2 characters drawn from your products</span></label>
                 <label class="choice"><input type="radio" name="package" value="Seasonal Package"><b>Seasonal</b><span>A seasonal full&#8209;page doodle, a seasonal themed menu and 6 seasonal characters</span></label>
-                <label class="choice"><input type="radio" name="package" value="Pick &amp; Mix Package"><b>Pick &amp; Mix</b><span>Any 5 designs, mixed however you like</span></label>
+                <label class="choice"><input type="radio" name="package" value="Pick &amp; Mix Package"><b>Pick &amp; Mix</b><span>5 items in total, 1 design per item, mixed however you like</span></label>
                 <label class="choice"><input type="radio" name="package" value="Not sure yet"><b>Not sure yet</b><span>We'll help you choose on the call</span></label>
               </div>
               <span class="err">Please choose a package, or "Not sure yet".</span></fieldset>
             <div class="field full season-field" id="season-field" hidden><label for="f-season">Which season is your campaign for?</label>
               <select id="f-season" name="season"><option value="">Choose a season</option><option>Bonfire Night (5 November)</option><option>Diwali (November)</option><option>Black Friday &amp; Cyber Monday</option><option>Christmas</option><option>New Year's Eve &amp; New Year's Day</option><option>Dry January &amp; Veganuary</option><option>Burns Night (25 January)</option><option>Lunar New Year</option><option>Ramadan &amp; Eid al-Fitr</option><option>Pancake Day</option><option>Valentine's Day</option><option>St David's Day (1 March)</option><option>Mother's Day</option><option>St Patrick's Day (17 March)</option><option>Easter</option><option>May bank holidays</option><option>Father's Day</option><option>Summer &amp; school holidays</option><option>Back to school</option><option>Halloween</option><option>Not sure yet, help me choose</option></select>
               <span class="err">Please choose a season.</span></div>
-            <fieldset class="field full mix-field" id="mix-field" hidden><legend>Pick your 5 designs <span class="opt">(mix them any way you like)</span></legend>
+            <fieldset class="field full mix-field" id="mix-field" hidden><legend>Pick your 5 items <span class="opt">(each design counts as 1 item; use + to add the same one again)</span></legend>
               <div class="mix" id="mix"></div>
               <p class="mix-total" id="mix-total" aria-live="polite"></p>
-              <span class="err">Please pick at least one design. You can finish choosing on the call.</span></fieldset>
+              <span class="err">Please pick at least 1 item. You can finish choosing on the call.</span></fieldset>
 
             <fieldset class="field full"><legend>What do you love? <span class="opt">(pick any)</span></legend>
               <div class="chips">
@@ -564,7 +563,7 @@ footer { padding-block: 24px 40px; border-top: 1px solid var(--line); }
 // (not activated yet, opened from a computer folder, or offline), the finished enquiry is handed to the visitor's own
 // email or WhatsApp app instead, already written and addressed.
 var CONTACT = { email: "elev8motionstudio@gmail.com", whatsapp: "27740208902" };   // whatsapp: international number, digits only, e.g. 447700900123
-// The designs a Pick & Mix client chooses from (up to MIX_MAX in total, any mix).
+// The designs a Pick & Mix client chooses from. Each one picked is 1 item, up to MIX_MAX items in total, any mix.
 var MIX_MAX = 5, MIX = [
   ["Page doodle", "A full page of your products as one doodle"],
   ["Product character sticker", "One of your products drawn as a character sticker"],
@@ -593,8 +592,8 @@ var MIX_MAX = 5, MIX = [
       row.classList.toggle("on", counts[i] > 0); row.querySelector("output").textContent = counts[i];
       row.querySelector('[data-d="-1"]').disabled = counts[i] === 0; row.querySelector('[data-d="1"]').disabled = t >= MIX_MAX;
     });
-    document.getElementById("mix-total").innerHTML = "<strong>" + t + " of " + MIX_MAX + "</strong> picked" +
-      (t >= MIX_MAX ? ". That's the full package." : t ? ". Pick " + (MIX_MAX - t) + " more, or finish choosing on the call." : "");
+    document.getElementById("mix-total").innerHTML = "<strong>" + t + " of " + MIX_MAX + " items</strong> picked" +
+      (t >= MIX_MAX ? ". That's the full package." : t ? ". Add " + (MIX_MAX - t) + " more, or finish choosing on the call." : ". Each + adds 1 item.");
   }
   mixBox.addEventListener("click", function (e) {
     var b = e.target.closest("button[data-i]"); if (!b) return;
@@ -632,7 +631,7 @@ var MIX_MAX = 5, MIX = [
       "Phone / WhatsApp: " + get("phone"), BR,
       "Package: " + pkg(),
       pkg() === "Seasonal Package" && "Season: " + get("season"),
-      pkg() === "Pick & Mix Package" && "My designs (" + total() + " of " + MIX_MAX + "): " + picks(),
+      pkg() === "Pick & Mix Package" && "My items (" + total() + " of " + MIX_MAX + "): " + picks(),
       loves.length && "What I love: " + loves.join(", "),
       get("about") && "About my business: " + get("about"), BR,
       "Best way to reach me: " + get("reach"),
@@ -657,7 +656,7 @@ var MIX_MAX = 5, MIX = [
       btn.disabled = true; btn.textContent = "Sending…";
       var get = function (k) { return String(d.get(k) || "").trim(); };
       var fields = { "Name": get("name"), "Business": get("business"), "Type of business": get("type"), "Instagram or website": get("instagram"),
-        "Email": get("email"), "Phone / WhatsApp": get("phone"), "Package": pkg(), "Season": pkg() === "Seasonal Package" ? get("season") : "", "Designs": pkg() === "Pick & Mix Package" ? total() + " of " + MIX_MAX + ": " + picks() : "",
+        "Email": get("email"), "Phone / WhatsApp": get("phone"), "Package": pkg(), "Season": pkg() === "Seasonal Package" ? get("season") : "", "Items": pkg() === "Pick & Mix Package" ? total() + " of " + MIX_MAX + ": " + picks() : "",
         "What they love": d.getAll("loves").join(", "), "About the business": get("about"), "Best way to reach them": get("reach"), "Best time for a consult": get("when") };
       Object.keys(fields).forEach(function (k) { if (!fields[k]) delete fields[k]; });
       fields._subject = subject; fields._replyto = get("email"); fields._template = "table"; fields._honey = get("_honey");
