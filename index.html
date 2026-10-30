@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Elev8 Motion Studio · Hand-drawn doodles & characters for food and drink brands</title>
-<meta name="description" content="Elev8 Motion Studio turns your products into hand-drawn doodles, characters and seasonal menus that make people hungry before they've read a word. All delivered digitally. Founded by Precious Muiambo.">
+<title>Elev8 Motion Studio · Hand-drawn doodles & characters for every kind of business</title>
+<meta name="description" content="Elev8 Motion Studio turns your products into hand-drawn doodles, characters, menus and animated logos for every kind of business. All delivered digitally. Founded by Precious Muiambo.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Elev8 Motion Studio">
-<meta property="og:description" content="Hand-drawn doodles, characters and menus that make people hungry before they've read a word.">
+<meta property="og:description" content="Hand-drawn doodles, characters and menus that make people stop scrolling, for every kind of business.">
 <meta property="og:url" content="https://retiosfernoherself-nic.github.io/elev8motionstudio/">
 <meta property="og:image" content="https://retiosfernoherself-nic.github.io/elev8motionstudio/media/share.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -178,7 +178,7 @@ section { padding-block: 60px; border-top: 1px solid var(--line); }
 .item p { color: var(--grey); max-width: 44em; }
 
 /* Packages */
-.packages { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.packages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 .pack { position: relative; display: grid; gap: 22px; align-content: start; padding: clamp(22px, 3.5vw, 36px); border-radius: 22px;
   background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow); overflow: hidden; }
 .pack::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 6px;
@@ -198,6 +198,13 @@ section { padding-block: 60px; border-top: 1px solid var(--line); }
 .free { display: inline-block; margin-left: 8px; padding: 2px 10px; border-radius: 999px; vertical-align: 2px; font: 700 11.5px var(--f-body); letter-spacing: .08em; text-transform: uppercase; color: #37343b;
   background: linear-gradient(135deg, #ffd3e4, #fff2c2 45%, #cdeedd 75%, #dccdff); box-shadow: 0 4px 10px rgba(185, 163, 239, .3); }
 .quote strong { color: var(--rose); }
+.pack.mixed::before { background: linear-gradient(90deg, #cdeedd, #fff2c2 25%, #ffc6dc 50%, #dccdff 75%, #cfe6ff); }
+.pick-note { font-weight: 600; color: var(--grey); font-size: 15px; }
+.pick-note strong { color: var(--ink); }
+.incl.pick .qty { font-size: 20px; }
+.incl .new { display: inline-block; margin-left: 8px; padding: 2px 9px; border-radius: 999px; vertical-align: 2px; font: 700 11px var(--f-body); letter-spacing: .08em; text-transform: uppercase; color: #37343b;
+  background: linear-gradient(135deg, #ffd3e4, #fff2c2 45%, #cdeedd 75%, #dccdff); }
+@media (max-width: 1180px) and (min-width: 961px) { .packages { grid-template-columns: repeat(2, minmax(0, 1fr)); } .pack.mixed { grid-column: 1 / -1; } }
 
 /* Enquiry form: contact details, then the package (and season), then what they love */
 .enquire { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
@@ -239,7 +246,20 @@ fieldset.field { border: 0; margin: 0; padding: 0; }
 .chip span { display: inline-block; padding: 8px 14px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--paper); font-weight: 600; font-size: 14px; cursor: pointer; }
 .chip input:checked + span { background: linear-gradient(135deg, #ffd3e4, #fff2c2 45%, #cdeedd 75%, #dccdff); border-color: transparent; color: #37343b; }
 .chip input:focus-visible + span { outline: 3px solid var(--lilac); outline-offset: 2px; }
-.season-field[hidden] { display: none; }
+.season-field[hidden], .mix-field[hidden] { display: none; }
+.mix { display: grid; gap: 8px; }
+.mix-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 10px 12px 10px 16px; border-radius: 14px; border: 1.5px solid var(--line); background: var(--paper); }
+.mix-row.on { border-color: var(--lilac); background: var(--surface); }
+.field.bad .mix-row { border-color: var(--rose); }
+.mix-row b { display: block; font-size: 14.5px; line-height: 1.3; }
+.mix-row small { display: block; margin-top: 3px; font-size: 11.5px; line-height: 1.6; letter-spacing: .01em; color: var(--grey); }
+.step { display: flex; align-items: center; gap: 6px; }
+.step button { width: 36px; height: 36px; border-radius: 999px; border: 1.5px solid var(--line); background: var(--surface); font: 700 18px/1 var(--f-body); color: var(--ink); cursor: pointer; }
+.step button:hover:not(:disabled) { border-color: var(--lilac); }
+.step button:disabled { opacity: .35; cursor: default; }
+.step output { min-width: 22px; text-align: center; font-family: var(--f-display); font-size: 22px; line-height: 1; }
+.mix-total { font-family: var(--f-mono); font-size: 13px; color: var(--grey); }
+.mix-total strong { color: var(--rose); }
 .form-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; margin-top: 22px; }
 .form-foot .mono { max-width: 32em; }
 .sent { display: grid; gap: 14px; }
@@ -303,10 +323,10 @@ footer { padding-block: 24px 40px; border-top: 1px solid var(--line); }
 <div class="wrap">
   <header class="hero">
     <div>
-      <p class="kicker">Hand-drawn doodles &amp; characters for food and drink brands</p>
+      <p class="kicker">Hand-drawn doodles &amp; characters for every kind of business</p>
       <h1>Elev8<br><span class="accent">Motion Studio</span></h1>
-      <p class="lede">Hand-drawn doodles and characters that make people hungry before they've read a word.</p>
-      <p class="sub">We turn your products into playful artwork for restaurants, cafés, bakeries and sweet shops: a full page of your best-sellers as a doodle, characters drawn from your products, and seasonal doodles, menus and characters for every big date. All delivered digitally.</p>
+      <p class="lede">Hand-drawn doodles and characters that make people stop scrolling before they've read a word.</p>
+      <p class="sub">Whatever you sell, we turn it into playful artwork: cafés and bakeries, salons and boutiques, florists, makers and more. A full page of your best-sellers as a doodle, characters drawn from your products, themed menus, animated logos and seasonal designs for every big date. All delivered digitally.</p>
       <div class="cta">
         <a class="btn primary" href="#enquire">Book a consult</a>
         <a class="btn" href="#packages">See our packages</a>
@@ -349,7 +369,7 @@ footer { padding-block: 24px 40px; border-top: 1px solid var(--line); }
   <section id="packages">
     <div class="head">
       <h2>Packages</h2>
-      <p>Two ways to get your brand moving. Every piece is drawn for your business from scratch and delivered digitally, and we agree the details on a quick consult first.</p>
+      <p>Three ways to get your brand moving. Every piece is drawn for your business from scratch and delivered digitally, and we agree the details on a quick consult first.</p>
     </div>
     <div class="packages">
       <article class="pack">
@@ -381,13 +401,31 @@ footer { padding-block: 24px 40px; border-top: 1px solid var(--line); }
         <p class="quote">Start with a quick <strong>consult call</strong>, then a 50% deposit secures your booking.</p>
         <a class="btn primary choose" href="#enquire" data-choose="Seasonal Package">Choose this package</a>
       </article>
+      <article class="pack mixed">
+        <div class="pack-top">
+          <p class="kicker">Any 5 designs, mixed however you like</p>
+          <h3>Pick &amp; Mix Package</h3>
+          <p class="price"><span class="cur">£</span>800</p>
+        </div>
+        <p class="pick-note">Choose <strong>5 designs</strong> from these. Pick one of each, or 5 of the same: five doodles, five stickers, it's up to you.</p>
+        <ul class="incl pick">
+          <li><span class="qty">✦</span>Page doodle of your products</li>
+          <li><span class="qty">✦</span>Product character sticker</li>
+          <li><span class="qty">✦</span>Character-themed menu</li>
+          <li><span class="qty">✦</span>Animated logo</li>
+          <li><span class="qty">✦</span><span>Doodle brand pattern<span class="new">New</span></span></li>
+        </ul>
+        <p class="digital">All designs are digital</p>
+        <p class="quote">Start with a quick <strong>consult call</strong>, then a 50% deposit secures your booking.</p>
+        <a class="btn primary choose" href="#enquire" data-choose="Pick &amp; Mix Package">Choose this package</a>
+      </article>
     </div>
   </section>
 
   <section id="how">
     <div class="head"><h2>How we work</h2></div>
     <div class="rules">
-      <div class="rule"><span class="num">1</span><h3>A quick chat</h3><p>Your menu, your best sellers, the deals you want to push and the look you like.</p></div>
+      <div class="rule"><span class="num">1</span><h3>A quick chat</h3><p>Your products or menu, your best sellers, the deals you want to push and the look you like.</p></div>
       <div class="rule"><span class="num">2</span><h3>Your brand, set up once</h3><p>Your colours, fonts and logo go into templates, so every post looks like it came from the same place.</p></div>
       <div class="rule"><span class="num">3</span><h3>Pay your deposit</h3><p>A 50% deposit secures your booking and we start designing. The other 50% is due after you have received your designs.</p></div>
       <div class="rule"><span class="num">4</span><h3>Receive your designs</h3><p>Your finished designs, delivered digitally and sized for your feed, stories and menu screens.</p></div>
@@ -417,7 +455,7 @@ footer { padding-block: 24px 40px; border-top: 1px solid var(--line); }
             <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required><span class="err">Please add a valid email.</span></div>
             <div class="field"><label for="f-phone">Phone / WhatsApp</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" required><span class="err">Please add a phone or WhatsApp number.</span></div>
             <div class="field"><label for="f-type">Type of business</label>
-              <select id="f-type" name="type" required><option value="">Choose one</option><option>Restaurant</option><option>Café or coffee shop</option><option>Bakery or cake shop</option><option>Sweets, desserts or ice cream</option><option>Fast food or takeaway</option><option>Juice, smoothie or bubble tea</option><option>Handmade products</option><option>Other</option></select>
+              <select id="f-type" name="type" required><option value="">Choose one</option><option>Restaurant, takeaway or fast food</option><option>Café, bakery or sweet shop</option><option>Hair, beauty or nails</option><option>Fashion, bags or accessories</option><option>Handmade products, candles or crafts</option><option>Shop or boutique</option><option>Flowers, gifts or events</option><option>Health, fitness or wellness</option><option>Services</option><option>Other</option></select>
               <span class="err">Please choose one.</span></div>
             <div class="field"><label for="f-ig">Instagram or website <span class="opt">(optional)</span></label><input id="f-ig" name="instagram" placeholder="@yourbusiness or yourbusiness.co.uk"></div>
 
@@ -425,12 +463,17 @@ footer { padding-block: 24px 40px; border-top: 1px solid var(--line); }
               <div class="choices">
                 <label class="choice"><input type="radio" name="package" value="Business Package"><b>Business</b><span>A page of your products as a doodle, plus 2 characters drawn from your products</span></label>
                 <label class="choice"><input type="radio" name="package" value="Seasonal Package"><b>Seasonal</b><span>A seasonal full&#8209;page doodle, a seasonal themed menu and 6 seasonal characters</span></label>
+                <label class="choice"><input type="radio" name="package" value="Pick &amp; Mix Package"><b>Pick &amp; Mix</b><span>Any 5 designs, mixed however you like</span></label>
                 <label class="choice"><input type="radio" name="package" value="Not sure yet"><b>Not sure yet</b><span>We'll help you choose on the call</span></label>
               </div>
               <span class="err">Please choose a package, or "Not sure yet".</span></fieldset>
             <div class="field full season-field" id="season-field" hidden><label for="f-season">Which season is your campaign for?</label>
               <select id="f-season" name="season"><option value="">Choose a season</option><option>Bonfire Night (5 November)</option><option>Diwali (November)</option><option>Black Friday &amp; Cyber Monday</option><option>Christmas</option><option>New Year's Eve &amp; New Year's Day</option><option>Dry January &amp; Veganuary</option><option>Burns Night (25 January)</option><option>Lunar New Year</option><option>Ramadan &amp; Eid al-Fitr</option><option>Pancake Day</option><option>Valentine's Day</option><option>St David's Day (1 March)</option><option>Mother's Day</option><option>St Patrick's Day (17 March)</option><option>Easter</option><option>May bank holidays</option><option>Father's Day</option><option>Summer &amp; school holidays</option><option>Back to school</option><option>Halloween</option><option>Not sure yet, help me choose</option></select>
               <span class="err">Please choose a season.</span></div>
+            <fieldset class="field full mix-field" id="mix-field" hidden><legend>Pick your 5 designs <span class="opt">(mix them any way you like)</span></legend>
+              <div class="mix" id="mix"></div>
+              <p class="mix-total" id="mix-total" aria-live="polite"></p>
+              <span class="err">Please pick at least one design. You can finish choosing on the call.</span></fieldset>
 
             <fieldset class="field full"><legend>What do you love? <span class="opt">(pick any)</span></legend>
               <div class="chips">
@@ -440,7 +483,7 @@ footer { padding-block: 24px 40px; border-top: 1px solid var(--line); }
                 <label class="chip"><input type="checkbox" name="loves" value="Fun &amp; playful"><span>Fun &amp; playful</span></label>
                 <label class="chip"><input type="checkbox" name="loves" value="Clean &amp; minimal"><span>Clean &amp; minimal</span></label>
                 <label class="chip"><input type="checkbox" name="loves" value="Elegant"><span>Elegant</span></label>
-                <label class="chip"><input type="checkbox" name="loves" value="Mouth-watering close-ups"><span>Mouth-watering close-ups</span></label>
+                <label class="chip"><input type="checkbox" name="loves" value="Product close-ups"><span>Product close-ups</span></label>
                 <label class="chip"><input type="checkbox" name="loves" value="Hand-drawn"><span>Hand-drawn</span></label>
               </div></fieldset>
             <div class="field full"><label for="f-about">Tell us about your business <span class="opt">(optional)</span></label>
@@ -521,12 +564,46 @@ footer { padding-block: 24px 40px; border-top: 1px solid var(--line); }
 // (not activated yet, opened from a computer folder, or offline), the finished enquiry is handed to the visitor's own
 // email or WhatsApp app instead, already written and addressed.
 var CONTACT = { email: "elev8motionstudio@gmail.com", whatsapp: "27740208902" };   // whatsapp: international number, digits only, e.g. 447700900123
+// The designs a Pick & Mix client chooses from (up to MIX_MAX in total, any mix).
+var MIX_MAX = 5, MIX = [
+  ["Page doodle", "A full page of your products as one doodle"],
+  ["Product character sticker", "One of your products drawn as a character sticker"],
+  ["Character-themed menu", "Your menu or price list, decorated with your characters"],
+  ["Animated logo", "Your logo brought to life in a short animation"],
+  ["Doodle brand pattern", "Your products drawn into a repeat pattern for packaging, bags, cups and backgrounds"]
+];
 (function () {
   var form = document.getElementById("enquiry"), sent = document.getElementById("sent");
   if (!form) return;
   var seasonField = document.getElementById("season-field"), season = document.getElementById("f-season"), pkgField = document.getElementById("pkg-field");
   function pkg() { var c = form.querySelector("input[name=package]:checked"); return c ? c.value : ""; }
-  function syncSeason() { var on = pkg() === "Seasonal Package"; seasonField.hidden = !on; season.required = on; if (!on) seasonField.classList.remove("bad"); }
+  function syncSeason() { var on = pkg() === "Seasonal Package"; seasonField.hidden = !on; season.required = on; if (!on) seasonField.classList.remove("bad"); syncMix(); }
+  // Pick & Mix: a − / + counter per design, never more than MIX_MAX in total
+  var mixField = document.getElementById("mix-field"), mixBox = document.getElementById("mix"), counts = MIX.map(function () { return 0; });
+  mixBox.innerHTML = MIX.map(function (m, i) {
+    return '<div class="mix-row"><span><b>' + m[0] + '</b><small>' + m[1] + '</small></span><div class="step">' +
+      '<button type="button" data-i="' + i + '" data-d="-1" aria-label="One less: ' + m[0] + '">−</button><output>0</output>' +
+      '<button type="button" data-i="' + i + '" data-d="1" aria-label="One more: ' + m[0] + '">+</button></div></div>';
+  }).join("");
+  function total() { return counts.reduce(function (a, b) { return a + b; }, 0); }
+  function picks() { return MIX.map(function (m, i) { return counts[i] ? counts[i] + " × " + m[0] : ""; }).filter(Boolean).join(", "); }
+  function drawMix() {
+    var t = total();
+    mixBox.querySelectorAll(".mix-row").forEach(function (row, i) {
+      row.classList.toggle("on", counts[i] > 0); row.querySelector("output").textContent = counts[i];
+      row.querySelector('[data-d="-1"]').disabled = counts[i] === 0; row.querySelector('[data-d="1"]').disabled = t >= MIX_MAX;
+    });
+    document.getElementById("mix-total").innerHTML = "<strong>" + t + " of " + MIX_MAX + "</strong> picked" +
+      (t >= MIX_MAX ? ". That's the full package." : t ? ". Pick " + (MIX_MAX - t) + " more, or finish choosing on the call." : "");
+  }
+  mixBox.addEventListener("click", function (e) {
+    var b = e.target.closest("button[data-i]"); if (!b) return;
+    var i = +b.dataset.i, d = +b.dataset.d;
+    if (d > 0 && total() >= MIX_MAX) return;
+    counts[i] = Math.max(0, counts[i] + d); if (total()) mixField.classList.remove("bad"); drawMix();
+  });
+  function syncMix() { var on = pkg() === "Pick & Mix Package"; mixField.hidden = !on; if (!on) mixField.classList.remove("bad"); }
+  drawMix();
   function valid(el) {
     if (!el.required) return true;
     var v = (el.value || "").trim();
@@ -555,6 +632,7 @@ var CONTACT = { email: "elev8motionstudio@gmail.com", whatsapp: "27740208902" };
       "Phone / WhatsApp: " + get("phone"), BR,
       "Package: " + pkg(),
       pkg() === "Seasonal Package" && "Season: " + get("season"),
+      pkg() === "Pick & Mix Package" && "My designs (" + total() + " of " + MIX_MAX + "): " + picks(),
       loves.length && "What I love: " + loves.join(", "),
       get("about") && "About my business: " + get("about"), BR,
       "Best way to reach me: " + get("reach"),
@@ -569,6 +647,8 @@ var CONTACT = { email: "elev8motionstudio@gmail.com", whatsapp: "27740208902" };
     });
     var hasPkg = !!pkg(); pkgField.classList.toggle("bad", !hasPkg);
     if (!hasPkg && !first) first = pkgField.querySelector("input");
+    var mixBad = pkg() === "Pick & Mix Package" && !total(); mixField.classList.toggle("bad", mixBad);
+    if (mixBad && !first) first = mixBox.querySelector('[data-d="1"]');
     if (first) { first.focus(); return; }
     var d = new FormData(form), text = message(d), subject = "Consult request: " + String(d.get("business")).trim() + " (" + pkg() + ")";
     var btn = form.querySelector("button[type=submit]"), label = btn.textContent;
@@ -577,7 +657,7 @@ var CONTACT = { email: "elev8motionstudio@gmail.com", whatsapp: "27740208902" };
       btn.disabled = true; btn.textContent = "Sending…";
       var get = function (k) { return String(d.get(k) || "").trim(); };
       var fields = { "Name": get("name"), "Business": get("business"), "Type of business": get("type"), "Instagram or website": get("instagram"),
-        "Email": get("email"), "Phone / WhatsApp": get("phone"), "Package": pkg(), "Season": pkg() === "Seasonal Package" ? get("season") : "",
+        "Email": get("email"), "Phone / WhatsApp": get("phone"), "Package": pkg(), "Season": pkg() === "Seasonal Package" ? get("season") : "", "Designs": pkg() === "Pick & Mix Package" ? total() + " of " + MIX_MAX + ": " + picks() : "",
         "What they love": d.getAll("loves").join(", "), "About the business": get("about"), "Best way to reach them": get("reach"), "Best time for a consult": get("when") };
       Object.keys(fields).forEach(function (k) { if (!fields[k]) delete fields[k]; });
       fields._subject = subject; fields._replyto = get("email"); fields._template = "table"; fields._honey = get("_honey");
